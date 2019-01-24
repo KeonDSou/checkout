@@ -3,6 +3,7 @@
   *
   * @author Keoni D'Souza
   */
+
 object Stuff {
   val stock: Map[Char, Int] = Map[Char, Int](
     // SKU -> price
