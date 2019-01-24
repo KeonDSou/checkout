@@ -4,7 +4,7 @@
 		module="checkout-build"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20190124110219"
+		publication="20190124112539"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>

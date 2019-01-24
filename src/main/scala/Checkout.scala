@@ -48,6 +48,7 @@ object Checkout extends App {
       .map(p => stock.get(p)) // Using .get is a failsafe
       .collect { case Some(i) => i }
       .sum
+  //      Other possible options
   //      .foldLeft(0)(_ + _)
   //      .foldRight(0)(_ + _)
   //      .foldLeft(0)((acc, next) => acc + next)
