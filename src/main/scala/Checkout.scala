@@ -106,8 +106,8 @@ object Checkout extends App {
     * @return Total price
     */
   def calculateItemTotal(sku: Char, quantity: Int, offer: (Int, Int)): Int = {
-    val promo = quantity / offer._1 * offer._2
-    val fullPrice = quantity % offer._1 * stock(sku)
+    val promo: Int = quantity / offer._1 * offer._2
+    val fullPrice: Int = quantity % offer._1 * stock(sku)
     promo + fullPrice
   }
 
