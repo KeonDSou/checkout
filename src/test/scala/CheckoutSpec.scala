@@ -52,15 +52,15 @@ class CheckoutSpec extends WordSpec with Matchers {
 
   }
 
-  //  "Checkout.calculateTotal" should {
-  //
-  //    "Return 0 for an empty shop" in {
-  //      Checkout.calculateTotal(List.empty, stock, 0) shouldBe 0
-  //    }
-  //
-  //    "Return 255 for a list of 3 As, 2 Bs, 1 20 and 4 15s, with offers calculated" in {
-  //      Checkout.calculateTotal(exampleShop, stock, 290) shouldBe 255
-  //    }
-  //  }
+    "Checkout.calculateTotal" should {
+
+      "Return 0 for an empty shop" in {
+        Checkout.calculatingTotal(List.empty, stock, offers) shouldBe 0
+      }
+
+      "Return 255 for a list of 3 As, 2 Bs, 1 20 and 4 15s, with offers calculated" in {
+        Checkout.calculatingTotal(exampleShop, stock, offers) shouldBe 255
+      }
+    }
 
 }
