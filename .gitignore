@@ -1,4 +1,10 @@
 # Please ignore these, Git
-.idea
-project
-target
+
+# Scala
+*.class
+**/target/
+/project
+
+# IDE
+/.idea
+*.iml
