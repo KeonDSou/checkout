@@ -55,12 +55,13 @@ class CheckoutSpec extends WordSpec with Matchers {
     "Checkout.calculateTotal" should {
 
       "Return 0 for an empty shop" in {
-        Checkout.calculatingTotal(List.empty, stock, offers) shouldBe 0
+        Checkout.calculateTotal(List.empty, stock, offers) shouldBe 0
       }
 
       "Return 255 for a list of 3 As, 2 Bs, 1 20 and 4 15s, with offers calculated" in {
-        Checkout.calculatingTotal(exampleShop, stock, offers) shouldBe 255
+        Checkout.calculateTotal(exampleShop, stock, offers) shouldBe 255
       }
+
     }
 
 }
