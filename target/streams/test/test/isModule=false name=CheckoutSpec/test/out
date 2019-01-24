@@ -1,0 +1,13 @@
+[0m[[0m[0minfo[0m] [0m[0m[32mCheckoutSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mCheckout.calculateSubtotalWithRecursion[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should Return 0 for an empty list[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should Return 50 for a list with an A[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should Return 35 for a list with a C and a D[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mCheckout.calculateSubtotalWithPM[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should Return 0 for an empty list[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should Return 50 for a list with an A[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should Return 35 for a list with a C and a D[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mCheckout.calculateSubtotalWithFold[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should Return 0 for an empty list[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should Return 50 for a list with an A[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should Return 35 for a list with a C and a D[0m[0m
