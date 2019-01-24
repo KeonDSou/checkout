@@ -1,2 +1,2 @@
 # checkout
-Checkout Kata simulating the process of purchasing items
+An app to model a supermarket checkout
