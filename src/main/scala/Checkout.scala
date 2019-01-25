@@ -34,6 +34,7 @@ object Checkout extends App {
 
   /**
     * Calculates subtotal with a recursive definition
+    *
     * @param items Products to be purchased
     * @param stock Char SKUs mapping to prices
     * @return Item subtotal
@@ -50,6 +51,7 @@ object Checkout extends App {
 
   /**
     * Calculates subtotal with pattern matching
+    *
     * @param items Products to be purchased
     * @param stock Char SKUs mapping to prices
     * @return Item subtotal
@@ -64,6 +66,7 @@ object Checkout extends App {
 
   /**
     * Calculates subtotal with a fold
+    *
     * @param items Products to be purchased
     * @param stock Char SKUs mapping to prices
     * @return Item subtotal
@@ -81,8 +84,9 @@ object Checkout extends App {
 
   /**
     * Calculate total price of shop
-    * @param items Products to be purchased
-    * @param stock Char SKUs mapping to prices
+    *
+    * @param items  Products to be purchased
+    * @param stock  Char SKUs mapping to prices
     * @param offers Char SKUs mapping to offers
     * @return Total price of shop
     */
