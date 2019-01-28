@@ -5,10 +5,6 @@
   * @author Keoni D'Souza
   */
 
-/**
-  * Test branch - CK-0001!
-  */
-
 object Inventory {
 
   // Char SKUs mapping to prices
@@ -35,7 +31,9 @@ object Checkout extends App {
 
   import Inventory._
 
+  print(Console.UNDERLINED)
   println("Checkout Kata\n")
+  print(Console.RESET)
 
   /**
     * Calculates subtotal with a recursive definition
@@ -52,6 +50,24 @@ object Checkout extends App {
       val price: Int = stock(item)
       val rest: List[Char] = items.tail
       price + calculateSubtotalWithRecursion(rest, stock)
+    }
+
+  /**
+    * Calculates subtotal using tail recursion
+    *
+    * @param items Products to be purchased
+    * @param stock Char SKUs mapping to prices
+    * @param zero  Used for optimisation
+    * @return Item subtotal
+    */
+  def calculateSubtotalWithTailRecursion(items: List[Char], stock: Map[Char, Int], zero: Int): Int =
+    if (items.isEmpty)
+      zero
+    else {
+      val item: Char = items.head
+      val price: Int = stock(item)
+      val rest: List[Char] = items.tail
+      price + calculateSubtotalWithTailRecursion(rest, stock, zero)
     }
 
   /**
