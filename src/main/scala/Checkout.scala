@@ -4,7 +4,7 @@
   * @author Keoni D'Souza
   */
 
-object Stuff {
+object Inventory {
 
   // Char SKUs mapping to prices
   val stock: Map[Char, Int] = Map[Char, Int](
@@ -28,7 +28,7 @@ object Stuff {
 
 object Checkout extends App {
 
-  import Stuff._
+  import Inventory._
 
   println("Checkout Kata\n")
 

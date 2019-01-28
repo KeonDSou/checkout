@@ -2,7 +2,7 @@ import org.scalatest.{Matchers, WordSpec}
 
 class CheckoutSpec extends WordSpec with Matchers {
 
-  import Stuff._
+  import Inventory._
 
   "Checkout.calculateSubtotalWithRecursion" should {
 
