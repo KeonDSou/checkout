@@ -1,3 +1,10 @@
+/**
+  * An app to model a supermarket checkout
+  * Test suite
+  *
+  * @author Keoni D'Souza
+  */
+
 import org.scalatest.{Matchers, WordSpec}
 
 class CheckoutSpec extends WordSpec with Matchers {
@@ -16,6 +23,22 @@ class CheckoutSpec extends WordSpec with Matchers {
 
     "Return 35 for a list with a C and a D" in {
       Checkout.calculateSubtotalWithRecursion(List('C', 'D'), stock) shouldBe 35
+    }
+
+  }
+
+  "Checkout.calculateSubtotalWithTailRecursion" should {
+
+    "Return 0 for an empty list" in {
+      Checkout.calculateSubtotalWithTailRecursion(List.empty, stock, 0) shouldBe 0
+    }
+
+    "Return 50 for a list with an A" in {
+      Checkout.calculateSubtotalWithTailRecursion(List('A'), stock, 0) shouldBe 50
+    }
+
+    "Return 35 for a list with a C and a D" in {
+      Checkout.calculateSubtotalWithTailRecursion(List('C', 'D'), stock, 0) shouldBe 35
     }
 
   }

@@ -1,5 +1,6 @@
 /**
   * An app to model a supermarket checkout
+  * Source code
   *
   * @author Keoni D'Souza
   */
@@ -30,7 +31,9 @@ object Checkout extends App {
 
   import Inventory._
 
+  print(Console.UNDERLINED)
   println("Checkout Kata\n")
+  print(Console.RESET)
 
   /**
     * Calculates subtotal with a recursive definition
@@ -47,6 +50,24 @@ object Checkout extends App {
       val price: Int = stock(item)
       val rest: List[Char] = items.tail
       price + calculateSubtotalWithRecursion(rest, stock)
+    }
+
+  /**
+    * Calculates subtotal using tail recursion
+    *
+    * @param items Products to be purchased
+    * @param stock Char SKUs mapping to prices
+    * @param zero  Used for optimisation
+    * @return Item subtotal
+    */
+  def calculateSubtotalWithTailRecursion(items: List[Char], stock: Map[Char, Int], zero: Int): Int =
+    if (items.isEmpty)
+      zero
+    else {
+      val item: Char = items.head
+      val price: Int = stock(item)
+      val rest: List[Char] = items.tail
+      price + calculateSubtotalWithTailRecursion(rest, stock, zero)
     }
 
   /**
@@ -76,11 +97,11 @@ object Checkout extends App {
       .map(p => stock.get(p)) // Using .get is a failsafe
       .collect { case Some(i) => i }
       .sum
-//      Other possible options
-//      .foldLeft(0)(_ + _)
-//      .foldRight(0)(_ + _)
-//      .foldLeft(0)((acc, next) => acc + next)
-//      .fold(0)(_ + _)
+  //      Other possible options
+  //      .foldLeft(0)(_ + _)
+  //      .foldRight(0)(_ + _)
+  //      .foldLeft(0)((acc, next) => acc + next)
+  //      .fold(0)(_ + _)
 
   /**
     * Calculate total price of shop
