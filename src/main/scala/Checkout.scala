@@ -1,5 +1,6 @@
 /**
   * An app to model a supermarket checkout
+  * Source code
   *
   * @author Keoni D'Souza
   */

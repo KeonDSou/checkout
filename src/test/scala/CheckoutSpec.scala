@@ -1,3 +1,10 @@
+/**
+  * An app to model a supermarket checkout
+  * Test suite
+  *
+  * @author Keoni D'Souza
+  */
+
 import org.scalatest.{Matchers, WordSpec}
 
 class CheckoutSpec extends WordSpec with Matchers {
