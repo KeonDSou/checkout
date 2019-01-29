@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 /**
   * An app to model a supermarket checkout
   * Source code
@@ -29,6 +31,14 @@ object Inventory {
 
 object Checkout extends App {
 
+  //  def getTotal(items: List[Item]): Int = ???
+  //
+  //  case class Offer(quantity: Int, price: Int)
+  //
+  //  val myOffer = Offer(2, 3)
+  //
+  //  println(s"Offer: $myOffer")
+
   import Inventory._
 
   print(Console.UNDERLINED)
@@ -53,24 +63,6 @@ object Checkout extends App {
     }
 
   /**
-    * Calculates subtotal using tail recursion
-    *
-    * @param items Products to be purchased
-    * @param stock Char SKUs mapping to prices
-    * @param zero  Used for optimisation
-    * @return Item subtotal
-    */
-  def calculateSubtotalWithTailRecursion(items: List[Char], stock: Map[Char, Int], zero: Int): Int =
-    if (items.isEmpty)
-      zero
-    else {
-      val item: Char = items.head
-      val price: Int = stock(item)
-      val rest: List[Char] = items.tail
-      price + calculateSubtotalWithTailRecursion(rest, stock, zero)
-    }
-
-  /**
     * Calculates subtotal with pattern matching
     *
     * @param items Products to be purchased
@@ -86,6 +78,32 @@ object Checkout extends App {
     }
 
   /**
+    * Calculates subtotal using tail recursion (wrapper function)
+    *
+    * @param items Products to be purchased
+    * @param stock Char SKUs mapping to prices
+    * @return Item subtotal
+    */
+  def calculateSubtotalWithTailRecursion(items: List[Char], stock: Map[Char, Int]): Int = {
+    /**
+      * Calculates subtotal using tail recursion
+      *
+      * @param items Products to be purchased
+      * @param acc   Accumulator
+      * @return Keeps track of the accumulator
+      */
+    @tailrec
+    def tailRecursion(items: List[Char], acc: Int): Int =
+      items match {
+        case Nil =>
+          acc
+        case h :: t => tailRecursion(t, acc + stock(h))
+      }
+
+    tailRecursion(items, 0)
+  }
+
+  /**
     * Calculates subtotal with a fold
     *
     * @param items Products to be purchased
@@ -97,6 +115,7 @@ object Checkout extends App {
       .map(p => stock.get(p)) // Using .get is a failsafe
       .collect { case Some(i) => i }
       .sum
+
   //      Other possible options
   //      .foldLeft(0)(_ + _)
   //      .foldRight(0)(_ + _)
