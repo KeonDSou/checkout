@@ -132,7 +132,7 @@ object Checkout extends App {
     */
   def calculateTotal(items: List[Char], stock: Map[Char, Int], offers: Map[Char, (Int, Int)]): Int =
     items
-      .groupBy(identity) // Also, x => x
+      .groupBy(identity) // identity is syntactic sugar for x => x
       .toList.map(t => {
       val (item, quantity) = (t._1, t._2.length)
       if (offers.contains(item))
