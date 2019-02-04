@@ -9,23 +9,23 @@ import scala.annotation.tailrec
 
 object Inventory {
 
-  // Char SKUs mapping to prices
-  val stock: Map[Char, Int] = Map[Char, Int](
+  // String SKUs mapping to prices
+  val stock: Map[String, Int] = Map[String, Int](
     // SKU -> price
-    'A' -> 50,
-    'B' -> 30,
-    'C' -> 20,
-    'D' -> 15
+    "A" -> 50,
+    "B" -> 30,
+    "C" -> 20,
+    "D" -> 15
   )
 
-  // Char SKUs mapping to offers
-  val offers: Map[Char, (Int, Int)] = Map[Char, (Int, Int)](
+  // String SKUs mapping to offers
+  val offers: Map[String, (Int, Int)] = Map[String, (Int, Int)](
     // SKU -> (x for y)
-    'A' -> (3, 130),
-    'B' -> (2, 45)
+    "A" -> (3, 130),
+    "B" -> (2, 45)
   )
 
-  val exampleShop = List('A', 'B', 'C', 'D', 'A', 'A', 'B', 'D', 'D', 'D')
+  val exampleShop = List("A", "B", "C", "D", "A", "A", "B", "D", "D", "D")
 
 }
 
@@ -49,16 +49,16 @@ object Checkout extends App {
     * Calculates subtotal with a recursive definition
     *
     * @param items Products to be purchased
-    * @param stock Char SKUs mapping to prices
+    * @param stock String SKUs mapping to prices
     * @return Item subtotal
     */
-  def calculateSubtotalWithRecursion(items: List[Char], stock: Map[Char, Int]): Int =
+  def calculateSubtotalWithRecursion(items: List[String], stock: Map[String, Int]): Int =
     if (items.isEmpty)
       0
     else {
-      val item: Char = items.head
+      val item: String = items.head
       val price: Int = stock(item)
-      val rest: List[Char] = items.tail
+      val rest: List[String] = items.tail
       price + calculateSubtotalWithRecursion(rest, stock)
     }
 
@@ -66,10 +66,10 @@ object Checkout extends App {
     * Calculates subtotal with pattern matching
     *
     * @param items Products to be purchased
-    * @param stock Char SKUs mapping to prices
+    * @param stock String SKUs mapping to prices
     * @return Item subtotal
     */
-  def calculateSubtotalWithPM(items: List[Char], stock: Map[Char, Int]): Int =
+  def calculateSubtotalWithPM(items: List[String], stock: Map[String, Int]): Int =
     items match {
       case Nil =>
         0
@@ -81,10 +81,10 @@ object Checkout extends App {
     * Calculates subtotal using tail recursion (wrapper function)
     *
     * @param items Products to be purchased
-    * @param stock Char SKUs mapping to prices
+    * @param stock String SKUs mapping to prices
     * @return Item subtotal
     */
-  def calculateSubtotalWithTailRecursion(items: List[Char], stock: Map[Char, Int]): Int = {
+  def calculateSubtotalWithTailRecursion(items: List[String], stock: Map[String, Int]): Int = {
     /**
       * Calculates subtotal using tail recursion
       *
@@ -93,7 +93,7 @@ object Checkout extends App {
       * @return Keeps track of the accumulator
       */
     @tailrec
-    def tailRecursion(items: List[Char], acc: Int): Int =
+    def tailRecursion(items: List[String], acc: Int): Int =
       items match {
         case Nil =>
           acc
@@ -107,10 +107,10 @@ object Checkout extends App {
     * Calculates subtotal with a fold
     *
     * @param items Products to be purchased
-    * @param stock Char SKUs mapping to prices
+    * @param stock String SKUs mapping to prices
     * @return Item subtotal
     */
-  def calculateSubtotalWithFold(items: List[Char], stock: Map[Char, Int]): Int =
+  def calculateSubtotalWithFold(items: List[String], stock: Map[String, Int]): Int =
     items
       .map(p => stock.get(p)) // Using .get is a failsafe
       .collect { case Some(i) => i }
@@ -126,11 +126,11 @@ object Checkout extends App {
     * Calculate total price of shop
     *
     * @param items  Products to be purchased
-    * @param stock  Char SKUs mapping to prices
-    * @param offers Char SKUs mapping to offers
+    * @param stock  String SKUs mapping to prices
+    * @param offers String SKUs mapping to offers
     * @return Total price of shop
     */
-  def calculateTotal(items: List[Char], stock: Map[Char, Int], offers: Map[Char, (Int, Int)]): Int =
+  def calculateTotal(items: List[String], stock: Map[String, Int], offers: Map[String, (Int, Int)]): Int =
     items
       .groupBy(identity) // Also, x => x
       .toList.map(t => {
@@ -149,7 +149,7 @@ object Checkout extends App {
     * @param offer    Tuple containing promotional information
     * @return Total price
     */
-  def calculateItemTotal(sku: Char, quantity: Int, offer: (Int, Int)): Int = {
+  def calculateItemTotal(sku: String, quantity: Int, offer: (Int, Int)): Int = {
     val promo: Int = quantity / offer._1 * offer._2
     val fullPrice: Int = quantity % offer._1 * stock(sku)
     promo + fullPrice
@@ -162,7 +162,7 @@ object Checkout extends App {
     * @param quantity Number of items
     * @return Total price
     */
-  def calculateItemTotal(sku: Char, quantity: Int): Int = {
+  def calculateItemTotal(sku: String, quantity: Int): Int = {
     quantity * stock(sku)
   }
 
