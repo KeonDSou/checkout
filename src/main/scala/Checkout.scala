@@ -31,8 +31,8 @@ object Inventory {
 
 object Inventory {
 
-  case class Product(sku: Char, price: Int)
-  case class PromoProduct(sku: Char, price: Int, offer: Map[Char, Int])
+  case class Product(sku: Char, price: Int, offer: Option[Offer])
+  case class Offer(quantity: Int, price: Int)
 
 }
 
