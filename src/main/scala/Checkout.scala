@@ -7,7 +7,7 @@ import scala.annotation.tailrec
   * @author Keoni D'Souza
   */
 
-object Inventory {
+object InventoryOld {
 
   // Char SKUs mapping to prices
   val stock: Map[Char, Int] = Map[Char, Int](
@@ -31,8 +31,15 @@ object Inventory {
 
 object Inventory {
 
-  case class Product(sku: Char, price: Int, offer: Option[Offer])
-  case class Offer(quantity: Int, price: Int)
+  final case class Product(sku: Char, price: Int, offer: Option[Offer])
+  final case class Offer(quantity: Int, price: Int)
+
+  val a = Product('A', 50, Option(Offer(3, 130)))
+  val b = Product('B', 30, Option(Offer(2, 45)))
+  val c = Product('C', 20, None)
+  val d = Product('D', 15, None)
+
+  val testShop: List[Product] = List(a, b, c, d, a, a, b, d, d, d)
 
 }
 
@@ -46,7 +53,7 @@ object Checkout extends App {
   //
   //  println(s"Offer: $myOffer")
 
-  import Inventory._
+  import InventoryOld._
 
   print(Console.UNDERLINED)
   println("Checkout Kata\n")
