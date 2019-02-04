@@ -29,6 +29,13 @@ object Inventory {
 
 }
 
+object Inventory {
+
+  case class Product(sku: Char, price: Int)
+  case class PromoProduct(sku: Char, price: Int, offer: Map[Char, Int])
+
+}
+
 object Checkout extends App {
 
   //  def getTotal(items: List[Item]): Int = ???
