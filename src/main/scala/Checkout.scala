@@ -34,12 +34,13 @@ object Inventory {
 
   final case class Offer(quantity: Int, price: Int)
 
-  val a = Product("A", 50, Option(Offer(3, 130)))
-  val b = Product("B", 30, Option(Offer(2, 45)))
-  val c = Product("C", 20, None)
-  val d = Product("D", 15, None)
+  val itemA = Product("A", 50, Option(Offer(3, 130)))
+  val itemB = Product("B", 30, Option(Offer(2, 45)))
+  val itemC = Product("C", 20, None)
+  val itemD = Product("D", 15, None)
 
-  val testShop: List[Product] = List(a, b, c, d, a, a, b, d, d, d)
+  val testShop: List[Product] =
+    List(itemA, itemB, itemC, itemD, itemA, itemA, itemB, itemD, itemD, itemD)
 
 }
 

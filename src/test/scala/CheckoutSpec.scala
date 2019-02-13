@@ -10,6 +10,8 @@ class CheckoutSpec extends WordSpec with Matchers {
 
   import InventoryOld._
 
+  import Inventory._
+
   "Checkout.calculateSubtotalWithRecursionOld" should {
 
     "Return 0 for an empty list" in {
@@ -22,6 +24,22 @@ class CheckoutSpec extends WordSpec with Matchers {
 
     "Return 35 for a list with a C and a D" in {
       Checkout.calculateSubtotalWithRecursionOld(List("C", "D"), stock) shouldBe 35
+    }
+
+  }
+
+  "Checkout.calculateSubtotalWithRecursion" should {
+
+    "Return 0 for an empty list" in {
+      Checkout.calculateSubtotalWithRecursion(List.empty) shouldBe 0
+    }
+
+    "Return 50 for a list with an A" in {
+      Checkout.calculateSubtotalWithRecursion(List(itemA)) shouldBe 50
+    }
+
+    "Return 35 for a list with a C and a D" in {
+      Checkout.calculateSubtotalWithRecursion(List(itemC, itemD)) shouldBe 35
     }
 
   }
