@@ -30,16 +30,16 @@ object InventoryOld {
 
 object Inventory {
 
-  final case class Product(sku: String, price: Int, offer: Option[Offer])
+  final case class Item(sku: String, price: Int, offer: Option[Offer])
 
   final case class Offer(quantity: Int, price: Int)
 
-  val itemA = Product("A", 50, Option(Offer(3, 130)))
-  val itemB = Product("B", 30, Option(Offer(2, 45)))
-  val itemC = Product("C", 20, None)
-  val itemD = Product("D", 15, None)
+  val itemA = Item("A", 50, Option(Offer(3, 130)))
+  val itemB = Item("B", 30, Option(Offer(2, 45)))
+  val itemC = Item("C", 20, None)
+  val itemD = Item("D", 15, None)
 
-  val testShop: List[Product] =
+  val testShop: List[Item] =
     List(itemA, itemB, itemC, itemD, itemA, itemA, itemB, itemD, itemD, itemD)
 
 }
@@ -80,12 +80,12 @@ object Checkout extends App {
       price + calculateSubtotalWithRecursionOld(rest, stock)
     }
 
-  def calculateSubtotalWithRecursion(items: List[Product]): Int =
+  def calculateSubtotalWithRecursion(items: List[Item]): Int =
     if (items.isEmpty)
       0
     else {
       val price: Int = items.head.price
-      val rest: List[Product] = items.tail
+      val rest: List[Item] = items.tail
       price + calculateSubtotalWithRecursion(rest)
     }
 
