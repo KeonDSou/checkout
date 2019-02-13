@@ -144,9 +144,9 @@ object CheckoutOutdated extends App {
       .map(t => {
         val (item, quantity) = (t._1, t._2.length)
         if (offers.contains(item))
-          calculateItemTotal(item, quantity, offers(item))
+          calculateItemTotalOutdated(item, quantity, offers(item))
         else
-          calculateItemTotal(item, quantity)
+          calculateItemTotalOutdated(item, quantity)
       })
       .sum
 
