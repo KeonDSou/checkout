@@ -101,7 +101,8 @@ object CheckoutOutdated extends App {
       items match {
         case Nil =>
           acc
-        case h :: t => tailRecursion(t, acc + stock(h))
+        case h :: t =>
+          tailRecursion(t, acc + stock(h))
       }
 
     tailRecursion(items, 0)
