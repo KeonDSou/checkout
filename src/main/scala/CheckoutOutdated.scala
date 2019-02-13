@@ -6,7 +6,7 @@ import scala.annotation.tailrec
   *
   * @author Keoni D'Souza
   */
-object InventoryOld {
+object InventoryOutdated {
 
   // String SKUs mapping to prices
   val stock: Map[String, Int] = Map[String, Int](
@@ -38,7 +38,7 @@ object CheckoutOutdated extends App {
   //
   //  println(s"Offer: $myOffer")
 
-  import InventoryOld._
+  import InventoryOutdated._
 
   print(Console.UNDERLINED)
   println("Checkout Kata\n")
