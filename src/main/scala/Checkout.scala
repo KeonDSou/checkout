@@ -164,6 +164,16 @@ object Checkout extends App {
       })
       .sum
 
+  //  items // Dave's (better) version
+  //    .map(t => (t._1, t._2.length))
+  //    .map {
+  //      case (item, quantity) if offers.contains(item) =>
+  //        calculateItemTotal(item, quantity, offers(item))
+  //
+  //      case (item, quantity) =>
+  //        calculateItemTotal(item, quantity)
+  //    }.sum
+
   /**
     * Calculate total price of n item(s) on offer
     *
