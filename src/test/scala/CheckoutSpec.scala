@@ -4,25 +4,24 @@
   *
   * @author Keoni D'Souza
   */
-
 import org.scalatest.{Matchers, WordSpec}
 
 class CheckoutSpec extends WordSpec with Matchers {
 
   import InventoryOld._
 
-  "Checkout.calculateSubtotalWithRecursion" should {
+  "Checkout.calculateSubtotalWithRecursionOld" should {
 
     "Return 0 for an empty list" in {
-      Checkout.calculateSubtotalWithRecursion(List.empty, stock) shouldBe 0
+      Checkout.calculateSubtotalWithRecursionOld(List.empty, stock) shouldBe 0
     }
 
     "Return 50 for a list with an A" in {
-      Checkout.calculateSubtotalWithRecursion(List("A"), stock) shouldBe 50
+      Checkout.calculateSubtotalWithRecursionOld(List("A"), stock) shouldBe 50
     }
 
     "Return 35 for a list with a C and a D" in {
-      Checkout.calculateSubtotalWithRecursion(List("C", "D"), stock) shouldBe 35
+      Checkout.calculateSubtotalWithRecursionOld(List("C", "D"), stock) shouldBe 35
     }
 
   }

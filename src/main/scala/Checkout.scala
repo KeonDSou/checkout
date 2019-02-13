@@ -55,6 +55,8 @@ object Checkout extends App {
 
   import InventoryOld._
 
+  import Inventory._
+
   print(Console.UNDERLINED)
   println("Checkout Kata\n")
   print(Console.RESET)
@@ -66,15 +68,24 @@ object Checkout extends App {
     * @param stock String SKUs mapping to prices
     * @return Item subtotal
     */
-  def calculateSubtotalWithRecursion(items: List[String],
-                                     stock: Map[String, Int]): Int =
+  def calculateSubtotalWithRecursionOld(items: List[String],
+                                        stock: Map[String, Int]): Int =
     if (items.isEmpty)
       0
     else {
       val item: String = items.head
       val price: Int = stock(item)
       val rest: List[String] = items.tail
-      price + calculateSubtotalWithRecursion(rest, stock)
+      price + calculateSubtotalWithRecursionOld(rest, stock)
+    }
+
+  def calculateSubtotalWithRecursion(items: List[Product]): Int =
+    if (items.isEmpty)
+      0
+    else {
+      val price: Int = items.head.price
+      val rest: List[Product] = items.tail
+      price + calculateSubtotalWithRecursion(rest)
     }
 
   /**
