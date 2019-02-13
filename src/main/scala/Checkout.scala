@@ -24,14 +24,6 @@ object Inventory {
 
 object Checkout extends App {
 
-  //  def getTotal(items: List[Item]): Int = ???
-  //
-  //  case class Offer(quantity: Int, price: Int)
-  //
-  //  val myOffer = Offer(2, 3)
-  //
-  //  println(s"Offer: $myOffer")
-
   import Inventory._
 
   print(Console.UNDERLINED)
@@ -52,5 +44,21 @@ object Checkout extends App {
       val rest: List[Item] = items.tail
       price + calculateSubtotalWithRecursion(rest)
     }
+
+//  /**
+//    * Calculates subtotal with pattern matching
+//    *
+//    * @param items Products to be purchased
+//    * @param stock String SKUs mapping to prices
+//    * @return Item subtotal
+//    */
+//  def calculateSubtotalWithPM(items: List[String],
+//                              stock: Map[String, Int]): Int =
+//    items match {
+//      case Nil =>
+//        0
+//      case h :: t =>
+//        stock(h) + calculateSubtotalWithPM(t, stock)
+//    }
 
 }

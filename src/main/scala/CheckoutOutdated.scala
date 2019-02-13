@@ -51,15 +51,15 @@ object CheckoutOutdated extends App {
     * @param stock String SKUs mapping to prices
     * @return Item subtotal
     */
-  def calculateSubtotalWithRecursionOld(items: List[String],
-                                        stock: Map[String, Int]): Int =
+  def calculateSubtotalWithRecursionOutdated(items: List[String],
+                                             stock: Map[String, Int]): Int =
     if (items.isEmpty)
       0
     else {
       val item: String = items.head
       val price: Int = stock(item)
       val rest: List[String] = items.tail
-      price + calculateSubtotalWithRecursionOld(rest, stock)
+      price + calculateSubtotalWithRecursionOutdated(rest, stock)
     }
 
   /**
@@ -69,13 +69,13 @@ object CheckoutOutdated extends App {
     * @param stock String SKUs mapping to prices
     * @return Item subtotal
     */
-  def calculateSubtotalWithPM(items: List[String],
-                              stock: Map[String, Int]): Int =
+  def calculateSubtotalWithPMOutdated(items: List[String],
+                                      stock: Map[String, Int]): Int =
     items match {
       case Nil =>
         0
       case h :: t =>
-        stock(h) + calculateSubtotalWithPM(t, stock)
+        stock(h) + calculateSubtotalWithPMOutdated(t, stock)
     }
 
   /**
@@ -85,8 +85,9 @@ object CheckoutOutdated extends App {
     * @param stock String SKUs mapping to prices
     * @return Item subtotal
     */
-  def calculateSubtotalWithTailRecursion(items: List[String],
-                                         stock: Map[String, Int]): Int = {
+  def calculateSubtotalWithTailRecursionOutdated(
+      items: List[String],
+      stock: Map[String, Int]): Int = {
 
     /**
       * Calculates subtotal using tail recursion
@@ -113,8 +114,8 @@ object CheckoutOutdated extends App {
     * @param stock String SKUs mapping to prices
     * @return Item subtotal
     */
-  def calculateSubtotalWithFold(items: List[String],
-                                stock: Map[String, Int]): Int =
+  def calculateSubtotalWithFoldOutdated(items: List[String],
+                                        stock: Map[String, Int]): Int =
     items
       .map(p => stock.get(p)) // Using .get is a failsafe
       .collect { case Some(i) => i }
@@ -134,9 +135,9 @@ object CheckoutOutdated extends App {
     * @param offers String SKUs mapping to offers
     * @return Total price of shop
     */
-  def calculateTotal(items: List[String],
-                     stock: Map[String, Int],
-                     offers: Map[String, (Int, Int)]): Int =
+  def calculateTotalOutdated(items: List[String],
+                             stock: Map[String, Int],
+                             offers: Map[String, (Int, Int)]): Int =
     items
       .groupBy(identity) // identity is syntactic sugar for x => x
       .toList
@@ -167,7 +168,9 @@ object CheckoutOutdated extends App {
     * @param offer    Tuple containing promotional information
     * @return Total price
     */
-  def calculateItemTotal(sku: String, quantity: Int, offer: (Int, Int)): Int = {
+  def calculateItemTotalOutdated(sku: String,
+                                 quantity: Int,
+                                 offer: (Int, Int)): Int = {
     val promo: Int = quantity / offer._1 * offer._2
     val fullPrice: Int = quantity % offer._1 * stock(sku)
     promo + fullPrice
@@ -180,7 +183,7 @@ object CheckoutOutdated extends App {
     * @param quantity Number of items
     * @return Total price
     */
-  def calculateItemTotal(sku: String, quantity: Int): Int = {
+  def calculateItemTotalOutdated(sku: String, quantity: Int): Int = {
     quantity * stock(sku)
   }
 
