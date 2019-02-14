@@ -86,7 +86,6 @@ object Checkout extends App {
     tailRecursion(items, 0)
   }
 
-  // TODO Work out what's happening from here (it's not been sorted yet)
   /**
     * Calculates subtotal with a fold
     *
@@ -98,53 +97,65 @@ object Checkout extends App {
       .map(_.price)
       .sum
 
-  //
-  //  /**
-  //    * Calculate total price of shop
-  //    *
-  //    * @param items  Products to be purchased
-  //    * @return Total price of shop
-  //    */
-  //  def calculateTotal(items: List[Item]): Int =
-  //    items // Dave's (better) version
-  //      .map(t => (t._1, t._2.length))
-  //      .map {
-  //        case (item, quantity) if offers.contains(item) =>
-  //          calculateItemTotal(item, quantity, offers(item))
-  //
-  //        case (item, quantity) =>
-  //          calculateItemTotal(item, quantity)
-  //      }
-  //      .sum
-  //
-  //  /**
-  //    * Calculate total price of n item(s) on offer
-  //    *
-  //    * @param sku      Singular product type
-  //    * @param quantity Number of items
-  //    * @return Total price
-  //    */
-  //  def calculateItemTotal(item: Item, quantity: Int): Int = {
-  //    val promo: Int = quantity / offer._1 * offer._2
-  //    val fullPrice: Int = quantity % offer._1 * stock(sku)
-  //    promo + fullPrice
-  //  }
-  //
-  //  /**
-  //    * Calculate total price of n non-promotional item(s)
-  //    *
-  //    * @param item     Singular product type
-  //    * @param quantity Number of items
-  //    * @return Total price
-  //    */
-  //  def calculateItemTotal(item: Item, quantity: Int): Int = {
-  //    item.offer match {
-  //      case None =>
-  //        item.price * quantity
-  //      case Some(item.offer) =>
-  //        val promo: Int = quantity / item. * offer._2
-  //        val fullPrice: Int = quantity % offer._1 * stock(sku)
-  //        promo + fullPrice
-  //    }
-  //  }
+  // TODO Work out what's happening from here (it's not been sorted yet)
+
+  /**
+    * Calculate total price of shop
+    *
+    * @param items  Products to be purchased
+    * @return Total price of shop
+    */
+  def calculateTotal(items: List[Item]) =
+    items
+      .groupBy(_.sku)
+      .mapValues(_.size)
+
+  println(calculateTotal(List(itemC, itemC, itemD)))
+//      items.flatMap(_.price)
+//
+//      items // Dave's (better) version
+//        .map(t => (t._1, t._2.length))
+//        .map {
+//          case (item, quantity) if offers.contains(item) =>
+//            calculateItemTotal(item, quantity, offers(item))
+//
+//          case (item, quantity) =>
+//            calculateItemTotal(item, quantity)
+//        }
+//        .sum
+
+//    /**
+//      * Calculate total price of n item(s) on offer
+//      *
+//      * @param sku      Singular product type
+//      * @param quantity Number of items
+//      * @return Total price
+//      */
+//    def calculateItemTotal(item: Item, quantity: Int): Int = {
+//      val promo: Int = quantity / offer._1 * offer._2
+//      val fullPrice: Int = quantity % offer._1 * stock(sku)
+//      promo + fullPrice
+//    }
+//
+//    /**
+//      * Calculate total price of n non-promotional item(s)
+//      *
+//      * @param item     Singular product type
+//      * @param quantity Number of items
+//      * @return Total price
+//      */
+//    def calculateItemTotal(item: Item, quantity: Int): Int = {
+//      item.price
+//
+//
+//      if(item.)
+//      if (Some(item.offer))
+//        item.price * quantity
+//      if ((item.offer).exists
+//      else {
+//          val promo: Int = quantity / item. * offer._2
+//          val fullPrice: Int = quantity % offer._1 * stock(sku)
+//          promo + fullPrice
+//      }
+//    }
 }
