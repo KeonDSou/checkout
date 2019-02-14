@@ -1,7 +1,3 @@
-import CheckoutOutdated.calculateItemTotalOutdated
-import InventoryOutdated.stock
-import com.sun.xml.internal.bind.v2.TODO
-
 import scala.annotation.tailrec
 
 /**
@@ -91,65 +87,64 @@ object Checkout extends App {
   }
 
   // TODO Work out what's happening from here (it's not been sorted yet)
-//  /**
-//    * Calculates subtotal with a fold
-//    *
-//    * @param items Products to be purchased
-//    * @return Item subtotal
-//    */
-//  def calculateSubtotalWithFold(items: List[Item],
-//                                stock: Map[String, Int]): Int =
-//    items
-//      .map(p => stock.get(p)) // Using .get is a failsafe
-//      .collect { case Some(i) => i }
-//      .sum
-//
-//  /**
-//    * Calculate total price of shop
-//    *
-//    * @param items  Products to be purchased
-//    * @return Total price of shop
-//    */
-//  def calculateTotal(items: List[Item]): Int =
-//    items // Dave's (better) version
-//      .map(t => (t._1, t._2.length))
-//      .map {
-//        case (item, quantity) if offers.contains(item) =>
-//          calculateItemTotal(item, quantity, offers(item))
-//
-//        case (item, quantity) =>
-//          calculateItemTotal(item, quantity)
-//      }
-//      .sum
-//
-//  /**
-//    * Calculate total price of n item(s) on offer
-//    *
-//    * @param sku      Singular product type
-//    * @param quantity Number of items
-//    * @return Total price
-//    */
-//  def calculateItemTotal(item: Item, quantity: Int): Int = {
-//    val promo: Int = quantity / offer._1 * offer._2
-//    val fullPrice: Int = quantity % offer._1 * stock(sku)
-//    promo + fullPrice
-//  }
-//
-//  /**
-//    * Calculate total price of n non-promotional item(s)
-//    *
-//    * @param item     Singular product type
-//    * @param quantity Number of items
-//    * @return Total price
-//    */
-//  def calculateItemTotal(item: Item, quantity: Int): Int = {
-//    item.offer match {
-//      case None =>
-//        item.price * quantity
-//      case Some(item.offer) =>
-//        val promo: Int = quantity / item. * offer._2
-//        val fullPrice: Int = quantity % offer._1 * stock(sku)
-//        promo + fullPrice
-//    }
-//  }
+  /**
+    * Calculates subtotal with a fold
+    *
+    * @param items Products to be purchased
+    * @return Item subtotal
+    */
+  def calculateSubtotalWithFold(items: List[Item]): Int =
+    items
+      .map(_.price)
+      .sum
+
+  //
+  //  /**
+  //    * Calculate total price of shop
+  //    *
+  //    * @param items  Products to be purchased
+  //    * @return Total price of shop
+  //    */
+  //  def calculateTotal(items: List[Item]): Int =
+  //    items // Dave's (better) version
+  //      .map(t => (t._1, t._2.length))
+  //      .map {
+  //        case (item, quantity) if offers.contains(item) =>
+  //          calculateItemTotal(item, quantity, offers(item))
+  //
+  //        case (item, quantity) =>
+  //          calculateItemTotal(item, quantity)
+  //      }
+  //      .sum
+  //
+  //  /**
+  //    * Calculate total price of n item(s) on offer
+  //    *
+  //    * @param sku      Singular product type
+  //    * @param quantity Number of items
+  //    * @return Total price
+  //    */
+  //  def calculateItemTotal(item: Item, quantity: Int): Int = {
+  //    val promo: Int = quantity / offer._1 * offer._2
+  //    val fullPrice: Int = quantity % offer._1 * stock(sku)
+  //    promo + fullPrice
+  //  }
+  //
+  //  /**
+  //    * Calculate total price of n non-promotional item(s)
+  //    *
+  //    * @param item     Singular product type
+  //    * @param quantity Number of items
+  //    * @return Total price
+  //    */
+  //  def calculateItemTotal(item: Item, quantity: Int): Int = {
+  //    item.offer match {
+  //      case None =>
+  //        item.price * quantity
+  //      case Some(item.offer) =>
+  //        val promo: Int = quantity / item. * offer._2
+  //        val fullPrice: Int = quantity % offer._1 * stock(sku)
+  //        promo + fullPrice
+  //    }
+  //  }
 }

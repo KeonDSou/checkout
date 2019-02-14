@@ -58,4 +58,20 @@ class CheckoutSpec extends WordSpec with Matchers {
 
   }
 
+  "Checkout.calculateSubtotalWithFold" should {
+
+    "Return 0 for an empty list" in {
+      Checkout.calculateSubtotalWithFold(List.empty) shouldBe 0
+    }
+
+    "Return 50 for a list with an A" in {
+      Checkout.calculateSubtotalWithFold(List(itemA)) shouldBe 50
+    }
+
+    "Return 35 for a list with a C and a D" in {
+      Checkout.calculateSubtotalWithFold(List(itemC, itemD)) shouldBe 35
+    }
+
+  }
+
 }
