@@ -1,3 +1,10 @@
+/**
+  * An app to model a supermarket checkout
+  * Test suite
+  *
+  * @author Keoni D'Souza
+  */
+
 import org.scalatest.{Matchers, WordSpec}
 
 class CheckoutSpec extends WordSpec with Matchers {
@@ -11,11 +18,11 @@ class CheckoutSpec extends WordSpec with Matchers {
     }
 
     "Return 50 for a list with an A" in {
-      Checkout.calculateSubtotalWithRecursion(List('A'), stock) shouldBe 50
+      Checkout.calculateSubtotalWithRecursion(List("A"), stock) shouldBe 50
     }
 
     "Return 35 for a list with a C and a D" in {
-      Checkout.calculateSubtotalWithRecursion(List('C', 'D'), stock) shouldBe 35
+      Checkout.calculateSubtotalWithRecursion(List("C", "D"), stock) shouldBe 35
     }
 
   }
@@ -27,11 +34,27 @@ class CheckoutSpec extends WordSpec with Matchers {
     }
 
     "Return 50 for a list with an A" in {
-      Checkout.calculateSubtotalWithPM(List('A'), stock) shouldBe 50
+      Checkout.calculateSubtotalWithPM(List("A"), stock) shouldBe 50
     }
 
     "Return 35 for a list with a C and a D" in {
-      Checkout.calculateSubtotalWithPM(List('C', 'D'), stock) shouldBe 35
+      Checkout.calculateSubtotalWithPM(List("C", "D"), stock) shouldBe 35
+    }
+
+  }
+
+  "Checkout.calculateSubtotalWithTailRecursion" should {
+
+    "Return 0 for an empty list" in {
+      Checkout.calculateSubtotalWithTailRecursion(List.empty, stock) shouldBe 0
+    }
+
+    "Return 50 for a list with an A" in {
+      Checkout.calculateSubtotalWithTailRecursion(List("A"), stock) shouldBe 50
+    }
+
+    "Return 35 for a list with a C and a D" in {
+      Checkout.calculateSubtotalWithTailRecursion(List("C", "D"), stock) shouldBe 35
     }
 
   }
@@ -43,11 +66,11 @@ class CheckoutSpec extends WordSpec with Matchers {
     }
 
     "Return 50 for a list with an A" in {
-      Checkout.calculateSubtotalWithFold(List('A'), stock) shouldBe 50
+      Checkout.calculateSubtotalWithFold(List("A"), stock) shouldBe 50
     }
 
     "Return 35 for a list with a C and a D" in {
-      Checkout.calculateSubtotalWithFold(List('C', 'D'), stock) shouldBe 35
+      Checkout.calculateSubtotalWithFold(List("C", "D"), stock) shouldBe 35
     }
 
   }
@@ -67,19 +90,19 @@ class CheckoutSpec extends WordSpec with Matchers {
   "Checkout.calculateItemTotal" should {
 
     "Return 0 for no B items" in {
-      Checkout.calculateItemTotal('B', 0, offers('B')) shouldBe 0
+      Checkout.calculateItemTotal("B", 0, offers("B")) shouldBe 0
     }
 
     "Return 180 for four A items" in {
-      Checkout.calculateItemTotal('A', 4, offers('A')) shouldBe 180
+      Checkout.calculateItemTotal("A", 4, offers("A")) shouldBe 180
     }
 
     "Return 60 for three C items" in {
-      Checkout.calculateItemTotal('C', 3) shouldBe 60
+      Checkout.calculateItemTotal("C", 3) shouldBe 60
     }
 
     "Return 30 for two D items" in {
-      Checkout.calculateItemTotal('D', 2) shouldBe 30
+      Checkout.calculateItemTotal("D", 2) shouldBe 30
     }
 
   }
