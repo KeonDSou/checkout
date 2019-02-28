@@ -30,6 +30,21 @@ object Checkout extends App {
   println("Checkout Kata\n")
   print(Console.RESET)
 
+  val basket: Map[String, List[Item]];
+
+  /*********************************************************************************************************************
+    *
+    * Basket functions
+    *
+    */
+  def viewBasket(): Map[String, List[Item]] =
+    basket
+
+  /*********************************************************************************************************************
+    *
+    * Subtotal calculation functions
+    *
+    */
   /**
     * Calculates subtotal with a recursive definition
     *
