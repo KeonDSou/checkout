@@ -30,15 +30,23 @@ object Checkout extends App {
   println("Checkout Kata\n")
   print(Console.RESET)
 
-  val basket: Map[String, List[Item]];
-
   /*********************************************************************************************************************
     *
     * Basket functions
     *
     */
-  def viewBasket(): Map[String, List[Item]] =
+  lazy val basket: List[Item] = List()
+
+  def viewBasket(): List[Item] =
     basket
+
+  def addToBasket(items: List[Item]) = {
+    println(basket ::: items)
+    basket ::: items
+  }
+
+  def removeItemFromBasket(item: Item) =
+    addToBasket(testShop)
 
   /*********************************************************************************************************************
     *
